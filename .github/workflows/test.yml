@@ -1,0 +1,17 @@
+---
+
+name: mon workflow de test
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  mon-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install cowsay
+        uses: mscoutermarsh/cowsays-action@master
+        with:
+          text: ${{ env.ISSUE_COMMENT }}
+          color: "blue"
